@@ -14,18 +14,6 @@ To do List App to be used in practicing best code practices to test our knowledg
 [This project](https://ndayishimiyeeric.github.io/Review-to-do-list/)
 [Original](https://ndayishimiyeeric.github.io/Minimal-todo-list/)
 
-Run Dev Server (Port 3000)
-
-```
-  npm run dev
-```
-
-## Build for production
-
-```
-npm run build
-```
-
 ## Author
 
 👤 **Odaltoneric**
