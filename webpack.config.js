@@ -11,7 +11,7 @@ module.exports = {
     filename: '[name].js',
     clean: true,
     assetModuleFilename: '[name][ext]',
-    publicPath: '/Minimal-todo-list/',
+    publicPath: '/Review-to-do-list/',
   },
   devtool: 'source-map',
   devServer: {
@@ -52,7 +52,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Minimal ToDo List',
+      title: 'Review-to-do-list',
       filename: 'index.html',
       template: 'src/template.html',
     }),
