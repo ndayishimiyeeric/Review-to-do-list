@@ -1,177 +1,177 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 body {
-    color: #7b7b7b;
-    background-color: #ddd;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100;
-    font-size: 20px;
+  color: #7b7b7b;
+  background-color: #ddd;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 20px;
 }
 
 textarea {
-    border: none;
-    width: 100%;
-    height: 1.5em;
-    resize: none;
-    outline: none;
-    font-size: 1rem;
-    padding-top: 2px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    color: #333;
+  border: none;
+  width: 100%;
+  height: 1.5em;
+  resize: none;
+  outline: none;
+  font-size: 1rem;
+  padding-top: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #333;
 }
 
-[type="checkbox"]:checked+textarea {
-    opacity: 0.5;
-    text-decoration: line-through;
+[type="checkbox"]:checked + textarea {
+  opacity: 0.5;
+  text-decoration: line-through;
 }
 
 .container {
-    margin: auto;
-    margin-top: 10%;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    box-shadow: 0 5px 20px #333;
+  margin: auto;
+  margin-top: 10%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 5px 20px #333;
 
-    .todo-header {
-        position: relative;
+  .todo-header {
+    position: relative;
 
-        h6 {
-            margin-top: 10px;
-            margin-left: 5px;
-            margin-bottom: 2%;
-        }
-
-        i {
-            position: absolute;
-            top: 10px;
-            right: 5px;
-            font-size: 14px;
-        }
+    h6 {
+      margin-top: 10px;
+      margin-left: 5px;
+      margin-bottom: 2%;
     }
+
+    i {
+      position: absolute;
+      top: 10px;
+      right: 5px;
+      font-size: 14px;
+    }
+  }
+
+  button {
+    display: block;
+    padding: 10px 10px;
+    text-align: center;
+    border: none;
+    color: #7b7b7b;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  button:hover {
+    text-decoration: underline;
+  }
+
+  .adding-task {
+    position: relative;
 
     button {
-        display: block;
-        padding: 10px 10px;
-        text-align: center;
-        border: none;
-        color: #7b7b7b;
-        width: 100%;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      width: 0;
+      height: 0;
+      background: transparent;
+      font-size: 15px;
+      color: #7b7b7b;
+      font-weight: 400;
+    }
+  }
+
+  .adding-task input {
+    padding: 15px 10px;
+    width: 100%;
+    border: none;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+  }
+
+  .adding-task input:focus {
+    outline: none;
+  }
+
+  .todo-tasks {
+    display: flex;
+    flex-direction: column;
+
+    .task {
+      padding: 2px 10px;
+      font-size: 15px;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      label {
+        color: #333;
+      }
+
+      input {
+        margin-right: 10px;
+      }
+
+      span {
+        position: absolute;
+        top: 5px;
+        right: 20px;
+        font-size: 10px;
+      }
+
+      span:hover {
+        color: #333;
         cursor: pointer;
+      }
+
+      small {
+        margin-top: 15px;
+        padding-right: 8px;
+        font-size: 15px;
+      }
+
+      small:hover {
+        color: #333;
+        cursor: move;
+      }
     }
 
-    button:hover {
-        text-decoration: underline;
+    .draggable {
+      cursor: move;
     }
 
-    .adding-task {
-        position: relative;
-
-        button {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            width: 0;
-            height: 0;
-            background: transparent;
-            font-size: 15px;
-            color: #7b7b7b;
-            font-weight: 400;
-        }
+    .draggable.dragging {
+      background: #7b7b7b;
     }
 
-    .adding-task input {
-        padding: 15px 10px;
-        width: 100%;
-        border: none;
-        border-top: 1px solid #333;
-        border-bottom: 1px solid #333;
+    .draggable.dragging textarea {
+      background: transparent;
+      color: white;
     }
 
-    .adding-task input:focus {
-        outline: none;
+    .task:last-child {
+      margin-bottom: 0;
     }
 
-    .todo-tasks {
-        display: flex;
-        flex-direction: column;
-
-        .task {
-            padding: 2px 10px;
-            font-size: 15px;
-            font-weight: 300;
-            display: flex;
-            align-items: center;
-            position: relative;
-
-            label {
-                color: #333;
-            }
-
-            input {
-                margin-right: 10px;
-            }
-
-            span {
-                position: absolute;
-                top: 5px;
-                right: 20px;
-                font-size: 10px;
-            }
-
-            span:hover {
-                color: #333;
-                cursor: pointer;
-            }
-
-            small {
-                margin-top: 15px;
-                padding-right: 8px;
-                font-size: 15px;
-            }
-
-            small:hover {
-                color: #333;
-                cursor: move;
-            }
-        }
-
-        .draggable {
-            cursor: move;
-        }
-
-        .draggable.dragging {
-            background: #7b7b7b;
-        }
-
-        .draggable.dragging textarea {
-            background: transparent;
-            color: white;
-        }
-
-        .task:last-child {
-            margin-bottom: 0;
-        }
-
-        .task::after {
-            position: absolute;
-            content: '';
-            right: 0;
-            left: 0;
-            bottom: -1%;
-            height: 1px;
-            background: #333;
-            opacity: 0.2;
-        }
+    .task::after {
+      position: absolute;
+      content: '';
+      right: 0;
+      left: 0;
+      bottom: -1%;
+      height: 1px;
+      background: #333;
+      opacity: 0.2;
     }
+  }
 }
