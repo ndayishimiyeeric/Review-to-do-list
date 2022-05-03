@@ -1,7 +1,8 @@
 import './styles/main.scss';
 import Tasks from './modules/ClassStore.js';
-
-const addForm = document.querySelector('#add-task');
+import {
+  addForm, reset, clearAll,
+} from './modules/selectors.js';
 
 const tasksCollection = new Tasks();
 tasksCollection.displayTasks();
@@ -18,13 +19,13 @@ addForm.addEventListener('submit', (e) => {
   document.querySelector('#input-add-task').value = '';
 });
 
-document.querySelector('.reflesh').addEventListener('click', () => {
+reset.addEventListener('click', () => {
   tasksCollection.tasksArray = [];
   setLocalStorage();
   tasksCollection.displayTasks();
 });
 
-document.querySelector('.clear-completed').addEventListener('click', () => {
+clearAll.addEventListener('click', () => {
   tasksCollection.tasksArray = tasksCollection.tasksArray.filter((task) => !task.complete);
   setLocalStorage();
   tasksCollection.displayTasks();

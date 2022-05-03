@@ -1,10 +1,11 @@
+import { taskDiv } from './selectors.js';
+
 export default class Tasks {
   constructor() {
     this.tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
   }
 
   displayTasks() {
-    const taskDiv = document.querySelector('.todo-tasks');
     taskDiv.innerHTML = '';
     this.tasksArray.sort((taskOne, taskTwo) => taskOne.index - taskTwo.index).forEach((task) => {
       const taskElement = document.createElement('div');
