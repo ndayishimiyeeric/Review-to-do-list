@@ -6,6 +6,10 @@ const addForm = document.querySelector('#add-task');
 const tasksCollection = new Tasks();
 tasksCollection.displayTasks();
 
+const setLocalStorage = () => {
+  localStorage.setItem('tasks', JSON.stringify(tasksCollection.tasksArray));
+};
+
 addForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const inputTaskValue = document.querySelector('#input-add-task').value;
@@ -16,12 +20,12 @@ addForm.addEventListener('submit', (e) => {
 
 document.querySelector('.reflesh').addEventListener('click', () => {
   tasksCollection.tasksArray = [];
-  localStorage.setItem('tasks', JSON.stringify(tasksCollection.tasksArray));
+  setLocalStorage();
   tasksCollection.displayTasks();
 });
 
 document.querySelector('.clear-completed').addEventListener('click', () => {
   tasksCollection.tasksArray = tasksCollection.tasksArray.filter((task) => !task.complete);
-  localStorage.setItem('tasks', JSON.stringify(tasksCollection.tasksArray));
+  setLocalStorage();
   tasksCollection.displayTasks();
 });
