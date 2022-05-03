@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 ul {
@@ -11,7 +12,6 @@ ul {
 body {
   color: #7b7b7b;
   background-color: #ddd;
-  font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 20px;
 }
@@ -24,7 +24,6 @@ textarea {
   outline: none;
   font-size: 1rem;
   padding-top: 2px;
-  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: #333;
 }
