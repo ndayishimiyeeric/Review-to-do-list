@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 export default class Tasks {
   constructor() {
     this.tasksArray = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -22,11 +21,12 @@ export default class Tasks {
     deleteBtn.forEach((btn, index) => {
       btn.addEventListener('click', () => {
         this.removeTask(index);
+        document.location.reload();
       });
     });
     const textareaEvent = document.querySelectorAll('.textarea');
-    for (let i = 0; i < textareaEvent.length; i += 1) {
-      textareaEvent[i].addEventListener('focusout', (e) => {
+    textareaEvent.forEach((event) => {
+      event.addEventListener('focusout', (e) => {
         e.target.parentElement.style.background = '#fff';
         if (e.target.value) {
           this.updateTask(e.target.parentElement.firstElementChild.id, e.target.value);
@@ -35,18 +35,18 @@ export default class Tasks {
           e.target.style.textDecoration = 'line-through';
         }
       });
-      textareaEvent[i].addEventListener('focusin', (e) => {
+      event.addEventListener('focusin', (e) => {
         e.target.parentElement.style.background = '#E9E4F0';
         e.target.style.background = 'transparent';
         e.target.style.textDecoration = 'none';
       });
-    }
+    });
 
     const checkboxInputs = document.querySelectorAll('input[type=checkbox]');
-    for (let i = 0; i < checkboxInputs.length; i += 1) {
-      checkboxInputs[i].addEventListener('change', (e) => {
+    checkboxInputs.forEach((input) => {
+      input.addEventListener('change', (e) => {
         for (let task of this.tasksArray) {//eslint-disable-line
-          if (task.index == e.target.id) {
+          if (task.index === e.target.id) {
             if (e.target.checked) {
               task.complete = true;
               e.target.nextElementSibling.style.textDecoration = 'line-through';
@@ -58,21 +58,21 @@ export default class Tasks {
         }
         localStorage.setItem('tasks', JSON.stringify(this.tasksArray));
       });
-    }
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
       const checkedBoxs = document.querySelectorAll('.checkbox');
-      for (let i = 0; i < checkedBoxs.length; i += 1) {
+      checkedBoxs.forEach((checkedBox) => {
         for (let task of this.tasksArray) {//eslint-disable-line
-          if (checkedBoxs[i].id == task.index) {
-            if (task.complete == true) {
-              checkedBoxs[i].checked = true;
+          if (checkedBox.id === task.index) {
+            if (task.complete) {
+              checkedBox.checked = true;
             } else {
-              checkedBoxs[i].checked = false;
+              checkedBox.checked = false;
             }
           }
         }
-      }
+      });
     });
   }
 
@@ -85,6 +85,7 @@ export default class Tasks {
     this.tasksArray.push(task);
     localStorage.setItem('tasks', JSON.stringify(this.tasksArray));
     this.displayTasks();
+    document.location.reload();
   }
 
   removeTask(index) {
@@ -95,7 +96,7 @@ export default class Tasks {
 
   updateTask(index, newdescription) {
     for (let task of this.tasksArray) {//eslint-disable-line
-      if (task.index == index) {
+      if (task.index === index) {
         task.description = newdescription;
       }
     }
