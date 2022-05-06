@@ -65,4 +65,15 @@ describe('delete completed tasks, Update a task to completed, and edit a task de
       ]),
     );
   });
+  test('Edit a task description', () => {
+    const localStorageMock = {
+      getItem: jest.fn(),
+      setItem: jest.fn(),
+      clear: jest.fn(),
+    };
+    global.localStorage = localStorageMock;
+    updateTask(1, 'eat');
+    expect(tasksArray).toEqual([{ description: 'eat', index: 1, complete: false }]);
+    expect(global.localStorage.setItem).toBeCalledWith('tasks', JSON.stringify(tasksArray));
+  });
 });
