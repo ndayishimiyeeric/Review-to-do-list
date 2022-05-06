@@ -1,4 +1,7 @@
-import { addTask, deleteItem, tasksArray } from '../modules/ClassStore.js';
+import {
+  addTask, deleteItem, tasksArray, clearAllFunction,
+  CompletedTask, updateTask,
+} from '../modules/ClassStore.js';
 
 describe('Add and Delete Function', () => {
   const localStorageMock = {
@@ -9,12 +12,7 @@ describe('Add and Delete Function', () => {
   global.localStorage = localStorageMock;
   test('add item to array', () => {
     addTask('Play');
-    const expected = {
-      description: 'Play',
-      index: 1,
-      complete: false,
-    };
-    expect(tasksArray).toEqual([expected]);
+    expect(tasksArray).toEqual([{ description: 'Play', index: 1, complete: false }]);
     expect(tasksArray.length).toBe(1);
     expect(global.localStorage.setItem).toBeCalledWith('tasks', JSON.stringify(tasksArray));
   });

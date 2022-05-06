@@ -33,10 +33,14 @@ reset.addEventListener('click', () => {
   displayTasks();
 });
 
-clearAll.addEventListener('click', () => {
+function clearAllFunction() {
   const newtasksArray = tasksArray.filter((task) => !task.complete);
   localStorage.setItem('tasks', JSON.stringify(newtasksArray));
   // tasksCollection.displayTasks();
   displayTasks();
   document.location.reload();
-});
+}
+
+clearAll.addEventListener('click', clearAllFunction);
+
+export default { clearAllFunction };

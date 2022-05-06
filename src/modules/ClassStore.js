@@ -94,19 +94,19 @@ export function displayTasks() {
   // document.location.reload();
 }
 
-  export function removeTask(index) { //eslint-disable-line
-  if (localStorage.getItem('tasks')) {
-    tasksArray = JSON.parse(localStorage.getItem('tasks'));
-  }
-  tasksArray.splice(index, 1);
-  localStorage.setItem('tasks', JSON.stringify(tasksArray));
-  displayTasks();
+export function CompletedTask(tasksArray, Id) {
+  tasksArray.forEach((task) => {
+    if (task.index === Number(Id)) {
+      task.completed = !task.completed;
+      localStorage.setItem('tasks', JSON.stringify(tasksArray));
+    }
+  });
 }
 
-  function updateTask(index, newdescription) {//eslint-disable-line
-  if (localStorage.getItem('tasks')) {
-    tasksArray = JSON.parse(localStorage.getItem('tasks'));
-  }
+export  function updateTask(index, newdescription) {//eslint-disable-line
+  // if (localStorage.getItem('tasks')) {
+  //   tasksArray = JSON.parse(localStorage.getItem('tasks'));
+  // }
     for (let task of tasksArray) {//eslint-disable-line
     if (task.index === index) {
       task.description = newdescription;
@@ -132,4 +132,9 @@ export function deleteItem(tasksArray, id) {
   });
   RefactorIndex(tasksArray);
   // displayTasks();
+}
+
+export function clearAllFunction() {
+  const newtasksArray = tasksArray.filter((task) => !task.complete);
+  localStorage.setItem('tasks', JSON.stringify(newtasksArray));
 }
